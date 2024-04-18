@@ -17,13 +17,20 @@ const app = express()
 
 // Middleware
 app.use(
-	cors({
-		origin: 'https://watcher-front.vercel.app/',
-		optionsSuccessStatus: 200,
-		methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-		allowedHeaders: ['Content-Type', 'Authorization'],
-		credentials: true,
-	})
+    cors({
+        origin: 'https://watcher-front.vercel.app/',
+        optionsSuccessStatus: 200,
+        allowedOrigins: ['https://watcher-front.vercel.app/'],
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+        allowedHeaders: [
+            'Content-Type',
+            'Authorization',
+            'Access-Control-Allow-Origin',
+            'Access-Control-Allow-Methods',
+            'Access-Control-Allow-Headers',
+        ],
+        credentials: true,
+    })
 )
 app.use(cookieParser())
 app.use(express.json())
