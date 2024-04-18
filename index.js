@@ -10,7 +10,22 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 const app = express();
 dotenv.config();
-app.use(cors());
+app.use(
+  cors({
+      origin: 'https://ecommerce-frontend-amber-two.vercel.app',
+      optionsSuccessStatus: 200,
+      allowedOrigins: ['https://ecommerce-frontend-amber-two.vercel.app',"https://ecommerce-frontend-amber-two.vercel.app/"],
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+      allowedHeaders: [
+          'Content-Type',
+          'Authorization',
+          'Access-Control-Allow-Origin',
+          'Access-Control-Allow-Methods',
+          'Access-Control-Allow-Headers',
+      ],
+      credentials: true,
+  })
+)
 const connect = () => {
   mongoose
     .connect("mongodb+srv://tarunkc22ca:27tkcMongoDB@cluster0.muk3ggm.mongodb.net/?retryWrites=true&w=majority")
@@ -45,7 +60,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(8800, () => {
-  connect();
-  console.log("Connected to Server");
-});
+const PORT = process.env.PORT || 5002;
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
