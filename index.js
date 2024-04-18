@@ -20,7 +20,7 @@ app.use(
     cors({
         origin: 'https://watcher-front.vercel.app',
         optionsSuccessStatus: 200,
-        allowedOrigins: ['https://watcher-front.vercel.app'],
+        allowedOrigins: ['https://watcher-front.vercel.app','https://firebasestorage.googleapis.com'],
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
         allowedHeaders: [
             'Content-Type',
